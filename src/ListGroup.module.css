@@ -3,7 +3,12 @@
     background-color: white;
     padding : 1%;
 }
-.but{
-    /* visibility: hidden; */
-    
+.inputtag
+{
+    width:100%;
+    padding: 5px;
+}
+.set{
+    padding : 30px;
+    margin-right: 60px;
 }

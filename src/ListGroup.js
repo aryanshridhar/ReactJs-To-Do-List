@@ -5,7 +5,9 @@ export default class ListGroup extends Component {
 
     state = {
         display : 'none',
-        read : true
+        read : true,
+        value : this.props.items
+
     }
 
     hoverhandle = (e) =>
@@ -26,11 +28,24 @@ export default class ListGroup extends Component {
 
     }
 
-    modifyhandle = () =>
+    handlesubmit = (e) =>
     {
-
+        e.preventDefault();
+        console.log(e.target);
     }
 
+    handlechange = (e) =>
+    {
+        this.state.value[e.target.getAttribute('pressed')] = e.target.value;
+        this.setState({value : this.state.value});
+    }
+
+    donemodify = (e) =>
+    {
+        e.preventDefault();
+        this.state.value[e.target.getAttribute('pressed')] = e.target.value;
+        this.setState({value : this.state.value});
+    }
 
     render(props) {
             return (
@@ -43,19 +58,17 @@ export default class ListGroup extends Component {
                     <div className = 'row'>
                         <div className = 'col-12 text-left mt-4'>
                             {
-                            this.props.items.map((value , index) => {
+                            this.state.value.map((value , index) => {
                                 return(
-                                    <form onSubmit = {this.handlesubmit}>
-                                        <div key = {index} className = 'row' onMouseEnter = {this.hoverhandle} onMouseLeave = {this.hoverouthandle}>
-                                            <div className = 'col-6 text-left'>
-                                                <input type = 'text' readOnly value = {value}></input>
-                                            </div>
-                                            <div className = 'col-6 text-right'>
-                                                <button pressed = {index} style = {this.state} onClick = {this.deletehandle} className = {Styles.but}>Delete</button>
-                                                <button pressed = {index} style = {this.state} onClick = {this.modifyhandle} className = {Styles.but}>Modify</button>
-                                            </div>
+                                    <div key = {index} className = {'row' + " " + Styles.set} onMouseEnter = {this.hoverhandle} onMouseLeave = {this.hoverouthandle}>
+                                        <div className = 'col-10 text-left'>
+                                            <input className = {Styles.inputtag} pressed = {index} type = 'text' onChange = {this.handlechange} value = {value}></input>
                                         </div>
-                                    </form>
+                                        <div className = 'col-2 text-right'>
+                                            <button onClick = {this.donemodify}>Modify</button>
+                                            <button pressed = {index} style = {this.state} onClick = {this.deletehandle} className = {Styles.but}>Delete</button>
+                                        </div>
+                                    </div>
                                 )
                             })
                             }
