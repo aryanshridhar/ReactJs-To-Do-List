@@ -1,0 +1,23 @@
+.listview{
+    width: 60%;
+    background-color: white;
+    padding : 1%;
+}
+.inputtag
+{
+    width:100%;
+    padding : 7px 0px 7px 5px;
+    font-family:'Arial';
+    font-size: 17px;
+}
+.set{
+    padding : 0px 20px 15px 20px;
+    margin-right: 60px;
+}
+.but{
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.btn1{
+    border-top-left-radius: 15px;
+}

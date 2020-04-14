@@ -5,8 +5,4 @@ body{
     background-image: url('./back.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-size: 100% 14000%; */
-}
-.card{
-    /* height: 60vh; */
 }

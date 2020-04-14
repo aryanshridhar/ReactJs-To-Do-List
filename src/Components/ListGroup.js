@@ -6,14 +6,8 @@ export default class ListGroup extends Component {
     state = {
         display : 'none',
         read : true,
-        value : this.props.items,
+        value : this.props.items
     }
-
-    hoverhandle = (e) =>
-    {
-        this.setState({display : 'inline'}) 
-    }
-
     hoverouthandle = () =>
     {
         this.setState({display : 'none'})
@@ -21,7 +15,7 @@ export default class ListGroup extends Component {
     
     deletehandle = (e) =>
     {
-        delete this.props.items[e.target.getAttribute('pressed')];
+        this.state.value.splice(e.target.getAttribute('pressed') , 1);
         console.log(this.props.items);
         this.hoverouthandle();
 
@@ -37,6 +31,7 @@ export default class ListGroup extends Component {
     {
         this.state.value[e.target.getAttribute('pressed')] = e.target.value;
         this.setState({value : this.state.value});
+        this.setState({display : 'inline-block'})
     }
 
     donemodify = (e) =>
@@ -44,6 +39,7 @@ export default class ListGroup extends Component {
         e.preventDefault();
         this.state.value[e.target.getAttribute('pressed')] = e.target.value;
         this.setState({value : this.state.value});
+        this.setState({display : 'none'})
     }
 
     render(props) {
@@ -59,13 +55,15 @@ export default class ListGroup extends Component {
                             {
                             this.state.value.map((value , index) => {
                                 return(
-                                    <div key = {index} className = {'row' + " " + Styles.set} onMouseEnter = {this.hoverhandle} onMouseLeave = {this.hoverouthandle}>
+                                    <div key = {index} className = {'row' + " " + Styles.set}>
                                         <div className = 'col-10 text-left'>
                                             <input className = {Styles.inputtag} pressed = {index} type = 'text' onChange = {this.handlechange} value = {value}></input>
                                         </div>
-                                        <div className = 'col-2 text-right'>
-                                            <button onClick = {this.donemodify}>Modify</button>
-                                            <button pressed = {index} style = {this.state} onClick = {this.deletehandle} className = {Styles.but}>Delete</button>
+                                        <div className = 'col-2 text-right mt-1'>
+                                            <div className ="btn-group" role="group" aria-label="Basic example">
+                                            <button style = {this.state} onClick = {this.donemodify} className = {'btn btn-info mr-2'+ " " + Styles.but + " " + Styles.but1}>Modify</button>
+                                            <button pressed = {index} onClick = {this.deletehandle} className = {'btn btn-danger' + ' ' + Styles.but}>Remove</button>
+                                            </div>
                                         </div>
                                     </div>
                                 )
