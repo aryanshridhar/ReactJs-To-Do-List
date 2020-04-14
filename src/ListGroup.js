@@ -6,8 +6,7 @@ export default class ListGroup extends Component {
     state = {
         display : 'none',
         read : true,
-        value : this.props.items
-
+        value : this.props.items,
     }
 
     hoverhandle = (e) =>
@@ -52,7 +51,7 @@ export default class ListGroup extends Component {
                 <React.Fragment>
                     <div className = 'row'>
                         <div className = 'col-12 text-left'>
-                            <h5 className = 'mt-3 text-white'>Your List :-</h5>
+                            <h5 className = 'mt-3 text-black'>Total {this.props.items.length} items -</h5>
                         </div>
                     </div>
                     <div className = 'row'>

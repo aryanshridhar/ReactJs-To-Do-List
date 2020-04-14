@@ -1,7 +1,12 @@
 .movedown{
-    margin-top: 4%;
+    margin-top: 10%;
 }
 body{
-    background-image: linear-gradient(#8360c3,#2ebf91);
-    height: 100vh;
+    background-image: url('./back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-size: 100% 14000%; */
+}
+.card{
+    /* height: 60vh; */
 }
