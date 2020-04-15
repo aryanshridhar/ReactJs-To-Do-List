@@ -1,4 +1,4 @@
-# Chat-App
+# To-Do-List
 
 A basic To-do list built using React.js .
 
